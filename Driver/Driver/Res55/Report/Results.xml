@@ -1,0 +1,1129 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE Report
+[
+<!ELEMENT Report (General ,(Doc|BPT)) >
+<!ATTLIST Report ver CDATA #REQUIRED tmZone CDATA #REQUIRED>
+
+<!ELEMENT General ( DocLocation ) >
+<!ATTLIST General productName CDATA #REQUIRED productVer CDATA #REQUIRED os CDATA #REQUIRED host CDATA #REQUIRED qcserver CDATA #IMPLIED qcproject CDATA #IMPLIED SolManSolutionId CDATA #IMPLIED SolManProjectId CDATA #IMPLIED SolManTestPlanId CDATA #IMPLIED SolManTestPackageId CDATA #IMPLIED SolManUserInfoData CDATA #IMPLIED  >
+
+<!ELEMENT BPT (DName,Res,DVer?,TSet?,TInst?,NodeArgs,AdditionalInfo*,Doc*) >
+<!ATTLIST BPT rID ID #REQUIRED >
+
+<!ELEMENT Doc (DName,ConfName?,Res,DVer?,TSet?,TInst?,RunType?,DT?,AdditionalInfo*,Step*,DIter*,Step*,Action*,Doc*,Summary?,TestMaintenanceSummary*,NodeArgs?) >
+<!ATTLIST Doc rID ID #REQUIRED type (Test|BC|BPTWrapperTest|Flow|Group|Action) "Test" productName CDATA #REQUIRED BCIter CDATA #IMPLIED >
+
+<!ELEMENT RunType ( #PCDATA )>
+<!ATTLIST RunType fmStep (False|True) "False" batch (False|True) "False" upDesc (False|True) "False" upChk (False|True) "False" upAS (False|True) "False">
+
+<!ELEMENT DName ( #PCDATA ) >
+
+<!ELEMENT ConfName ( #PCDATA ) >
+
+<!ELEMENT Res ( #PCDATA ) >
+
+<!ELEMENT AdditionalInfo (AdditionalDataName,AdditionalDataValue ) >
+
+<!ELEMENT AdditionalDataName ( #PCDATA ) >
+
+<!ELEMENT AdditionalDataValue ( #PCDATA ) >
+
+<!ELEMENT DVer ( #PCDATA ) >
+
+<!ELEMENT TSet ( #PCDATA ) >
+
+<!ELEMENT TInst ( #PCDATA ) >
+
+<!ELEMENT DIter (Step*,Action+,Summary?,NodeArgs)>
+<!ATTLIST DIter rID ID #REQUIRED iterID CDATA #REQUIRED>
+
+<!ELEMENT DocLocation ( #PCDATA )>
+
+<!ELEMENT Action (AName,AIter*,(Step|HtmlStep|Action)*, Summary,ActionMaintenanceSummary*, NodeArgs ) >
+<!ATTLIST Action rID ID #REQUIRED>
+
+<!ELEMENT AIter ((Step|HtmlStep|Action)*,DataMapping?, Summary?,NodeArgs) >
+<!ATTLIST AIter rID ID #REQUIRED iterID CDATA #REQUIRED isCountable (False|True) "False" >
+
+<!ELEMENT AName ( #PCDATA ) >
+
+<!ELEMENT TestMaintenanceSummary (ActionMaintenanceSummary*) >
+<!ATTLIST TestMaintenanceSummary ObjectsAdded CDATA #REQUIRED ObjectsUpdated CDATA #REQUIRED StepsUpdated CDATA #REQUIRED StepsComments CDATA #REQUIRED><!ELEMENT ActionMaintenanceSummary (ObjectChange* ) >
+<!ATTLIST ActionMaintenanceSummary Action CDATA #REQUIRED Objects CDATA #REQUIRED Updated CDATA #REQUIRED LinesTotal CDATA #REQUIRED Added CDATA #REQUIRED LinesUpdated CDATA #REQUIRED>
+
+<!ELEMENT ObjectChange  (Hierarchy, PropertyChangeList* ) >
+<!ATTLIST ObjectChange Operation CDATA #IMPLIED OriginalRepository CDATA #IMPLIED>
+
+<!ELEMENT PropertyChangeList (PropertyDef*) >
+
+<!ELEMENT PropertyDef (OriginalValue, NewValue) >
+<!ATTLIST PropertyDef PropName CDATA #REQUIRED OriginRegularExpression (True|False) "False" NewRegularExpression (True|False) "False" AddedProperty (True|False) "False" >
+
+<!ELEMENT OriginalValue ( #PCDATA )>
+
+<!ELEMENT NewValue ( #PCDATA )>
+
+<!ELEMENT Hierarchy  (ObjectName, Hierarchy*) >
+<!ATTLIST Hierarchy MicClass CDATA #REQUIRED>
+
+<!ELEMENT ObjectName  ( #PCDATA ) >
+
+<!ELEMENT Step (Obj,Details,Time,TimeTick* ,(Step|HtmlStep|Doc)*, DataMapping?, NodeArgs) >
+<!ATTLIST Step rID ID #REQUIRED retval CDATA #IMPLIED>
+
+<!ELEMENT HtmlStep (HTML,TimeTick*,(Step|HtmlStep|Doc)*,NodeArgs) >
+<!ATTLIST HtmlStep rID ID #REQUIRED >
+
+<!ELEMENT Obj ( #PCDATA ) >
+<!ATTLIST Obj plainTxt (False|True) "True">
+
+<!ELEMENT Details ( #PCDATA ) >
+<!ATTLIST Details plainTxt (False|True) "True">
+
+<!ELEMENT Time ( #PCDATA ) >
+
+<!ELEMENT HTML ( #PCDATA ) >
+
+<!ELEMENT Disp ( #PCDATA ) >
+
+<!ELEMENT TimeTick ( #PCDATA ) >
+
+<!ELEMENT DataMapping ( DataMappedItem* )>
+<!ELEMENT DataMappedItem EMPTY >
+<!ATTLIST DataMappedItem dsName CDATA #REQUIRED >
+<!ATTLIST DataMappedItem rowId CDATA #REQUIRED >
+
+<!ELEMENT NodeArgs (Disp,TopPane?,BtmPane?,ExtendedInfo? )>
+<!ATTLIST NodeArgs eType CDATA #REQUIRED icon CDATA #REQUIRED nRep CDATA #REQUIRED UserNote CDATA #IMPLIED filter (False|True) "True">
+<!ATTLIST NodeArgs status (Passed|Failed|Done|Warning|Information) "Done">
+<!ATTLIST NodeArgs iconSel CDATA #IMPLIED nType CDATA #IMPLIED MovieMarker CDATA "">
+<!ATTLIST NodeArgs Source CDATA #IMPLIED SourceLine CDATA #IMPLIED StepFlowItemKey CDATA #IMPLIED >
+
+<!ELEMENT TopPane (Path)>
+
+<!ELEMENT BtmPane ( (Path|WR)?,ASHilite?)>
+<!ATTLIST BtmPane vType CDATA "HTML">
+
+<!ELEMENT Path ( #PCDATA ) >
+
+<!ELEMENT ASHilite ( #PCDATA ) >
+
+<!ELEMENT WR ( #PCDATA ) >
+
+<!ELEMENT ExtendedInfo ( StepData ) >
+
+<!ATTLIST ExtendedInfo StepType CDATA #REQUIRED>
+<!ELEMENT DT (NodeArgs) >
+<!ATTLIST DT rID ID #REQUIRED>
+
+<!ELEMENT Summary (Param*)>
+<!ATTLIST Summary sTime CDATA #IMPLIED eTime CDATA #IMPLIED passed CDATA #IMPLIED failed CDATA #IMPLIED warnings CDATA #IMPLIED retval CDATA #IMPLIED stopped (False|True) "False" >
+
+<!ELEMENT Param (ParamName,ParamVal)+ >
+<!ATTLIST Param paramInOut (In|Out) "In">
+
+<!ELEMENT ParamName ( #PCDATA ) >
+
+<!ELEMENT ParamVal ( #PCDATA ) >
+
+]
+>
+<Report ver="2.0" tmZone="India Standard Time">
+<General productName="HPE Unified Functional Testing" productVer="14.03" os="" host="DESKTOP-JH1F93I"><DocLocation><![CDATA[E:\capgemini\Asianpaintsankita\Driver\Driver]]></DocLocation></General>
+<Doc rID="T1"   productName= "HPE Unified Functional Testing"  >
+<DName><![CDATA[Driver]]></DName>
+<Res><![CDATA[Res55]]></Res>
+<DT rID="T2">
+<NodeArgs eType="Table" icon="2" nRep="4" filter="False" >
+<Disp><![CDATA[Run-Time Data Table]]></Disp>
+<BtmPane vType="Table" >
+<Path><![CDATA[Default.xls]]></Path>
+</BtmPane>
+</NodeArgs>
+</DT>
+<Action rID="T3">
+<AName><![CDATA[Action1]]></AName>
+<Step rID="T4">
+<Obj plainTxt="False" ><![CDATA[asianpaints]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "asianpaints" started.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:29]]></Time>
+<TimeTick>1649331629</TimeTick>
+<NodeArgs eType="Transaction" icon="4" nRep="7" nType="Start Transaction" Source="Action1" SourceLine="2" >
+<Disp><![CDATA[asianpaints]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T5">
+<Obj plainTxt="False" ><![CDATA[SystemUtil]]></Obj>
+<Details plainTxt="False" ><![CDATA[SystemUtil]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:35]]></Time>
+<TimeTick>1649331635</TimeTick>
+<Step rID="T6">
+<Obj plainTxt="False" ><![CDATA[Run "https://www.asianpaints.com/",1]]></Obj>
+<Details plainTxt="False" ><![CDATA[Run "https://www.asianpaints.com/",1]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:35]]></Time>
+<TimeTick>1649331635</TimeTick>
+<NodeArgs eType="Replay" icon="5" nRep="11" status="Passed" >
+<Disp><![CDATA[Run "https://www.asianpaints.com/",1]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Replay" icon="5" nRep="10" status="Passed" >
+<Disp><![CDATA[SystemUtil]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T7">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:40]]></Time>
+<TimeTick>1649331640</TimeTick>
+<Step rID="T8">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:40]]></Time>
+<TimeTick>1649331640</TimeTick>
+<Step rID="T9">
+<Obj plainTxt="False" ><![CDATA[q.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["Texture"]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:40]]></Time>
+<TimeTick>1649331640</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="16" >
+<Disp><![CDATA[q.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T10">
+<Obj plainTxt="False" ><![CDATA[q.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:40]]></Time>
+<TimeTick>1649331640</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="18" >
+<Disp><![CDATA[q.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="15" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="14" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T11">
+<Obj ><![CDATA[searchbox]]></Obj>
+<Details ><![CDATA[searchbox is clickable]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:40]]></Time>
+<TimeTick>1649331640</TimeTick>
+<NodeArgs eType="User" icon="9" nRep="19" status="Passed" >
+<Disp><![CDATA[searchbox]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T12">
+<Obj plainTxt="False" ><![CDATA[[ PAINTS & TEXTURES  ].Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:49]]></Time>
+<TimeTick>1649331649</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="22" >
+<Disp><![CDATA[[ PAINTS & TEXTURES  ].Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T13">
+<Obj plainTxt="False" ><![CDATA[[ Link ].Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object does not exist"]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:55]]></Time>
+<TimeTick>1649331655</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="29" >
+<Disp><![CDATA[[ Link ].Exist]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T14">
+<Obj ><![CDATA[header]]></Obj>
+<Details ><![CDATA[Navigation unsuccessful]]></Details>
+<Time><![CDATA[07-04-2022 - 17:10:55]]></Time>
+<TimeTick>1649331655</TimeTick>
+<NodeArgs eType="User" icon="9" nRep="30" status="Failed" >
+<Disp><![CDATA[header]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T15">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:25]]></Time>
+<TimeTick>1649331685</TimeTick>
+<Step rID="T16">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:25]]></Time>
+<TimeTick>1649331685</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="33" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T17">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (3 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>openurl=https://www.asianpaints.com<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>opentitle=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=3<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:25]]></Time>
+<TimeTick>1649331685</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="34" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T18">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:25]]></Time>
+<TimeTick>1649331685</TimeTick>
+<Step rID="T19">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:25]]></Time>
+<TimeTick>1649331685</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="36" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T20">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>name=<br>micclass=Page<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (1 objects found)&nbsp;</FONT></u><br>
+micclass=Page<br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:25]]></Time>
+<TimeTick>1649331685</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="37" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T21">
+<Obj plainTxt="False" ><![CDATA["Paint Budget Calculator"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:25]]></Time>
+<TimeTick>1649331685</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="39" status="Warning" >
+<Disp><![CDATA["Paint Budget Calculator"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T22">
+<Obj plainTxt="False" ><![CDATA["Paint Budget Calculator"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=Paint Budget Calculator Get a quick estimate by entering basic details about your painting needs.<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (239 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=Paint Budget Calculator Get a quick estimate by entering basic details about your painting needs.<SPAN class=Failed> (Skipped)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 239 matches)</SPAN><br>class=columnCrosslinks__item<SPAN class=passed> (Used</SPAN>, 3 matches)</SPAN><br>name=Paint Budget Calculator Get a quick estimate by entering basic details about your painting needs.<SPAN class=Failed> (Skipped)</SPAN><br>href=https://www.asianpaints.com/resources/tools/paint-budget-calculator.html<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>visible=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>acc_name=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:25]]></Time>
+<TimeTick>1649331685</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="40" >
+<Disp><![CDATA["Paint Budget Calculator"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T23">
+<Obj plainTxt="False" ><![CDATA[Paint Budget Calculator.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:25]]></Time>
+<TimeTick>1649331685</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="41" >
+<Disp><![CDATA[Paint Budget Calculator.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="35" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="32" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T24">
+<Obj plainTxt="False" ><![CDATA[Quick & Advanced Paint]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:31]]></Time>
+<TimeTick>1649331691</TimeTick>
+<Step rID="T25">
+<Obj plainTxt="False" ><![CDATA[Quick & Advanced Paint]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:31]]></Time>
+<TimeTick>1649331691</TimeTick>
+<Step rID="T26">
+<Obj plainTxt="False" ><![CDATA[Quick & Advanced Paint.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:31]]></Time>
+<TimeTick>1649331691</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="45" >
+<Disp><![CDATA[Quick & Advanced Paint.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="44" >
+<Disp><![CDATA[Quick & Advanced Paint]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="43" >
+<Disp><![CDATA[Quick & Advanced Paint]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T27">
+<Obj ><![CDATA[paintbudget]]></Obj>
+<Details ><![CDATA[Navigation successful]]></Details>
+<Time><![CDATA[07-04-2022 - 17:11:31]]></Time>
+<TimeTick>1649331691</TimeTick>
+<NodeArgs eType="User" icon="9" nRep="46" status="Passed" >
+<Disp><![CDATA[paintbudget]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T28">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:01]]></Time>
+<TimeTick>1649331721</TimeTick>
+<Step rID="T29">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:01]]></Time>
+<TimeTick>1649331721</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="49" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T30">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (3 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>openurl=https://www.asianpaints.com<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>opentitle=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=3<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:01]]></Time>
+<TimeTick>1649331721</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="50" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T31">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:02]]></Time>
+<TimeTick>1649331722</TimeTick>
+<Step rID="T32">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:02]]></Time>
+<TimeTick>1649331722</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="52" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T33">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>name=<br>micclass=Page<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (1 objects found)&nbsp;</FONT></u><br>
+micclass=Page<br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:02]]></Time>
+<TimeTick>1649331722</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="53" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T34">
+<Obj plainTxt="False" ><![CDATA["Colour Visualiser See"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:02]]></Time>
+<TimeTick>1649331722</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="55" status="Warning" >
+<Disp><![CDATA["Colour Visualiser See"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T35">
+<Obj plainTxt="False" ><![CDATA["Colour Visualiser See"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=Colour Visualiser See what your favourite colour looks like, before you start painting your house.<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (232 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=Colour Visualiser See what your favourite colour looks like, before you start painting your house.<SPAN class=Failed> (Skipped)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 232 matches)</SPAN><br>class=columnCrosslinks__item<SPAN class=Failed> (Skipped)</SPAN><br>name=Colour Visualiser See what your favourite colour looks like, before you start painting your house.<SPAN class=Failed> (Skipped)</SPAN><br>href=https://www.asianpaints.com/resources/tools/mobile-app.html<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>visible=-1<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>acc_name=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:02]]></Time>
+<TimeTick>1649331722</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="56" >
+<Disp><![CDATA["Colour Visualiser See"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T36">
+<Obj plainTxt="False" ><![CDATA[Colour Visualiser See.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:02]]></Time>
+<TimeTick>1649331722</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="57" >
+<Disp><![CDATA[Colour Visualiser See.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="51" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="48" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T37">
+<Obj plainTxt="False" ><![CDATA[Colour With Asian Paints]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:12]]></Time>
+<TimeTick>1649331732</TimeTick>
+<Step rID="T38">
+<Obj plainTxt="False" ><![CDATA[Colour With Asian Paints]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:12]]></Time>
+<TimeTick>1649331732</TimeTick>
+<Step rID="T39">
+<Obj plainTxt="False" ><![CDATA[mobile-app-landing-page-spotli.WaitProperty]]></Obj>
+<Details plainTxt="False" ><![CDATA["abs_x", True, 0, 10000]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:12]]></Time>
+<TimeTick>1649331732</TimeTick>
+<NodeArgs eType="Replay" icon="12" nRep="62" status="Warning" >
+<Disp><![CDATA[mobile-app-landing-page-spotli.WaitProperty]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="61" status="Warning" >
+<Disp><![CDATA[Colour With Asian Paints]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="60" status="Warning" >
+<Disp><![CDATA[Colour With Asian Paints]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T40">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<Step rID="T41">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="64" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T42">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (3 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>openurl=https://www.asianpaints.com<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>opentitle=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=3<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="65" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T43">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<Step rID="T44">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="67" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T45">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>name=<br>micclass=Page<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (1 objects found)&nbsp;</FONT></u><br>
+micclass=Page<br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="68" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T46">
+<Obj plainTxt="False" ><![CDATA["Colour Visualiser See"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="70" status="Warning" >
+<Disp><![CDATA["Colour Visualiser See"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T47">
+<Obj plainTxt="False" ><![CDATA["Colour Visualiser See"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=Colour Visualiser See what your favourite colour looks like, before you start painting your house.<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (174 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=Colour Visualiser See what your favourite colour looks like, before you start painting your house.<SPAN class=Failed> (Skipped)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 174 matches)</SPAN><br>class=columnCrosslinks__item<SPAN class=Failed> (Skipped)</SPAN><br>name=Colour Visualiser See what your favourite colour looks like, before you start painting your house.<SPAN class=Failed> (Skipped)</SPAN><br>href=https://www.asianpaints.com/resources/tools/mobile-app.html<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>visible=-1<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>acc_name=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="71" >
+<Disp><![CDATA["Colour Visualiser See"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T48">
+<Obj plainTxt="False" ><![CDATA[Colour Visualiser See.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="72" >
+<Disp><![CDATA[Colour Visualiser See.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="66" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="63" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T49">
+<Obj ><![CDATA[colorvisual]]></Obj>
+<Details ><![CDATA[Navigation successful]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:17]]></Time>
+<TimeTick>1649331737</TimeTick>
+<NodeArgs eType="User" icon="9" nRep="73" status="Passed" >
+<Disp><![CDATA[colorvisual]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T50">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:43]]></Time>
+<TimeTick>1649331763</TimeTick>
+<Step rID="T51">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:43]]></Time>
+<TimeTick>1649331763</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="75" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T52">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (3 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>openurl=https://www.asianpaints.com<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>opentitle=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=3<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:43]]></Time>
+<TimeTick>1649331763</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="76" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T53">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:43]]></Time>
+<TimeTick>1649331763</TimeTick>
+<Step rID="T54">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:43]]></Time>
+<TimeTick>1649331763</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="78" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T55">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>name=<br>micclass=Page<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (1 objects found)&nbsp;</FONT></u><br>
+micclass=Page<br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:43]]></Time>
+<TimeTick>1649331763</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="79" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T56">
+<Obj plainTxt="False" ><![CDATA["Explore Colours More than"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:43]]></Time>
+<TimeTick>1649331763</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="81" status="Warning" >
+<Disp><![CDATA["Explore Colours More than"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T57">
+<Obj plainTxt="False" ><![CDATA["Explore Colours More than"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=Explore Colours More than 2200 shades in our colour palette. Find the right one for your walls.<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (174 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=Explore Colours More than 2200 shades in our colour palette. Find the right one for your walls.<SPAN class=Failed> (Skipped)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 174 matches)</SPAN><br>class=columnCrosslinks__item<SPAN class=Failed> (Skipped)</SPAN><br>name=Explore Colours More than 2200 shades in our colour palette. Find the right one for your walls.<SPAN class=Failed> (Skipped)</SPAN><br>href=https://www.asianpaints.com/catalogue/colour-catalogue.html<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>visible=-1<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>acc_name=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:12:43]]></Time>
+<TimeTick>1649331763</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="82" >
+<Disp><![CDATA["Explore Colours More than"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="77" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T58">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:06]]></Time>
+<TimeTick>1649331786</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="84" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T59">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (3 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>openurl=https://www.asianpaints.com<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>opentitle=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=3<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:06]]></Time>
+<TimeTick>1649331786</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="85" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T60">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:06]]></Time>
+<TimeTick>1649331786</TimeTick>
+<Step rID="T61">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:06]]></Time>
+<TimeTick>1649331786</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="87" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T62">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>name=<br>micclass=Page<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (1 objects found)&nbsp;</FONT></u><br>
+micclass=Page<br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:06]]></Time>
+<TimeTick>1649331786</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="88" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T63">
+<Obj plainTxt="False" ><![CDATA["Explore Colours More than"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:06]]></Time>
+<TimeTick>1649331786</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="90" status="Warning" >
+<Disp><![CDATA["Explore Colours More than"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T64">
+<Obj plainTxt="False" ><![CDATA["Explore Colours More than"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=Explore Colours More than 2200 shades in our colour palette. Find the right one for your walls.<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (174 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=Explore Colours More than 2200 shades in our colour palette. Find the right one for your walls.<SPAN class=Failed> (Skipped)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 174 matches)</SPAN><br>class=columnCrosslinks__item<SPAN class=Failed> (Skipped)</SPAN><br>name=Explore Colours More than 2200 shades in our colour palette. Find the right one for your walls.<SPAN class=Failed> (Skipped)</SPAN><br>href=https://www.asianpaints.com/catalogue/colour-catalogue.html<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>visible=-1<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>acc_name=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:06]]></Time>
+<TimeTick>1649331786</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="91" >
+<Disp><![CDATA["Explore Colours More than"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T65">
+<Obj plainTxt="False" ><![CDATA[Explore Colours More than.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:07]]></Time>
+<TimeTick>1649331787</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="92" >
+<Disp><![CDATA[Explore Colours More than.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="86" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T66">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:12]]></Time>
+<TimeTick>1649331792</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="93" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T67">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (3 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>openurl=https://www.asianpaints.com<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>opentitle=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=3<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:12]]></Time>
+<TimeTick>1649331792</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="94" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T68">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:12]]></Time>
+<TimeTick>1649331792</TimeTick>
+<Step rID="T69">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:12]]></Time>
+<TimeTick>1649331792</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="96" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T70">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>name=<br>micclass=Page<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (1 objects found)&nbsp;</FONT></u><br>
+micclass=Page<br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:12]]></Time>
+<TimeTick>1649331792</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="97" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T71">
+<Obj plainTxt="False" ><![CDATA["Explore Colours More than"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:12]]></Time>
+<TimeTick>1649331792</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="99" status="Warning" >
+<Disp><![CDATA["Explore Colours More than"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T72">
+<Obj plainTxt="False" ><![CDATA["Explore Colours More than"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=Explore Colours More than 2200 shades in our colour palette. Find the right one for your walls.<br>micclass=Link<br>html tag=A<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (204 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=Explore Colours More than 2200 shades in our colour palette. Find the right one for your walls.<SPAN class=Failed> (Skipped)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 204 matches)</SPAN><br>class=columnCrosslinks__item<SPAN class=Failed> (Skipped)</SPAN><br>name=Explore Colours More than 2200 shades in our colour palette. Find the right one for your walls.<SPAN class=Failed> (Skipped)</SPAN><br>href=https://www.asianpaints.com/catalogue/colour-catalogue.html<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>visible=-1<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>acc_name=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:12]]></Time>
+<TimeTick>1649331792</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="100" >
+<Disp><![CDATA["Explore Colours More than"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T73">
+<Obj plainTxt="False" ><![CDATA[Explore Colours More than.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:12]]></Time>
+<TimeTick>1649331792</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="101" >
+<Disp><![CDATA[Explore Colours More than.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="95" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="74" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T74">
+<Obj ><![CDATA[explorecolor]]></Obj>
+<Details ><![CDATA[Navigation successful]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:12]]></Time>
+<TimeTick>1649331792</TimeTick>
+<NodeArgs eType="User" icon="9" nRep="102" status="Passed" >
+<Disp><![CDATA[explorecolor]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T75">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:44]]></Time>
+<TimeTick>1649331824</TimeTick>
+<Step rID="T76">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:44]]></Time>
+<TimeTick>1649331824</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="105" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T77">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (3 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>openurl=https://www.asianpaints.com<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>opentitle=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=3<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:44]]></Time>
+<TimeTick>1649331824</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="106" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T78">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:45]]></Time>
+<TimeTick>1649331825</TimeTick>
+<Step rID="T79">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:45]]></Time>
+<TimeTick>1649331825</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="108" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T80">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>name=<br>micclass=Page<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (1 objects found)&nbsp;</FONT></u><br>
+micclass=Page<br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:45]]></Time>
+<TimeTick>1649331825</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="109" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T81">
+<Obj plainTxt="False" ><![CDATA["Link_2"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not unique (25 objects found)</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=<br>role=<br>micclass=Link<br>html tag=A<br>acc_name=<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (204 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=<SPAN class=passed> (Used</SPAN>, 25 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 25 matches)</SPAN><br>class=<SPAN class=passed> (Used</SPAN>, 8 matches)</SPAN><br>name=<SPAN class=passed> (Used</SPAN>, 8 matches)</SPAN><br>href=https://play.google.com/store/apps/details?id=com.asianpaints.dbu.digital.colourwithasianpaints&hl=en<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>visible=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>acc_name=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:45]]></Time>
+<TimeTick>1649331825</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="111" >
+<Disp><![CDATA["Link_2"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T82">
+<Obj plainTxt="False" ><![CDATA[Link_2.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:45]]></Time>
+<TimeTick>1649331825</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="112" >
+<Disp><![CDATA[Link_2.Click]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="107" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T83">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:50]]></Time>
+<TimeTick>1649331830</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="113" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T84">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>micclass=Browser<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (3 objects found)&nbsp;</FONT></u><br>
+micclass=Browser<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=Failed> (Skipped)</SPAN><br>openurl=https://www.asianpaints.com<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>opentitle=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>openedbytestingtool=0<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>number of tabs=3<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:50]]></Time>
+<TimeTick>1649331830</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="114" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T85">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:50]]></Time>
+<TimeTick>1649331830</TimeTick>
+<Step rID="T86">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:50]]></Time>
+<TimeTick>1649331830</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="116" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T87">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>name=<br>micclass=Page<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (1 objects found)&nbsp;</FONT></u><br>
+micclass=Page<br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:50]]></Time>
+<TimeTick>1649331830</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="117" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T88">
+<Obj plainTxt="False" ><![CDATA["Link_2"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:51]]></Time>
+<TimeTick>1649331831</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="119" status="Warning" >
+<Disp><![CDATA["Link_2"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T89">
+<Obj plainTxt="False" ><![CDATA["Link_2"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>text=<br>role=<br>micclass=Link<br>html tag=A<br>acc_name=<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (137 objects found)&nbsp;</FONT></u><br>
+micclass=Link<br>html tag=A<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+text=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>html id=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>class=<SPAN class=Failed> (Skipped)</SPAN><br>name=<SPAN class=passed> (Used</SPAN>, 2 matches)</SPAN><br>href=https://play.google.com/store/apps/details?id=com.asianpaints.dbu.digital.colourwithasianpaints&hl=en<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>visible=-1<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>acc_name=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:51]]></Time>
+<TimeTick>1649331831</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="120" >
+<Disp><![CDATA["Link_2"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T90">
+<Obj plainTxt="False" ><![CDATA[Link_2.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:51]]></Time>
+<TimeTick>1649331831</TimeTick>
+<NodeArgs eType="Replay" icon="10" nRep="121" >
+<Disp><![CDATA[Link_2.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="115" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="104" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T91">
+<Obj ><![CDATA[designapp]]></Obj>
+<Details ><![CDATA[Navigation successful]]></Details>
+<Time><![CDATA[07-04-2022 - 17:13:51]]></Time>
+<TimeTick>1649331831</TimeTick>
+<NodeArgs eType="User" icon="9" nRep="122" status="Passed" >
+<Disp><![CDATA[designapp]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T92">
+<Obj plainTxt="False" ><![CDATA[Browser]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:16]]></Time>
+<TimeTick>1649331856</TimeTick>
+<Step rID="T93">
+<Obj plainTxt="False" ><![CDATA[Browser.Navigate]]></Obj>
+<Details plainTxt="False" ><![CDATA[Navigate to https://www.asianpaints.com/<br>Target Frame: _top<br>Post Data: <br>HTTP Headers: ]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:16]]></Time>
+<TimeTick>1649331856</TimeTick>
+<NodeArgs eType="Replay" icon="6" nRep="125" >
+<Disp><![CDATA[Browser.Navigate]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="124" >
+<Disp><![CDATA[Browser]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T94">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[<table><tr><td><span style="text-align : left; font-size : 12px; ">Local Browser</span></td></tr></table>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:20]]></Time>
+<TimeTick>1649331860</TimeTick>
+<Step rID="T95">
+<Obj plainTxt="False" ><![CDATA[Wall Paints, Home Painting]]></Obj>
+<Details plainTxt="False" ><![CDATA[Page]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:20]]></Time>
+<TimeTick>1649331860</TimeTick>
+<Step rID="T96">
+<Obj plainTxt="False" ><![CDATA[PINCODE_LOCATOR.Set]]></Obj>
+<Details plainTxt="False" ><![CDATA["400200"]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:20]]></Time>
+<TimeTick>1649331860</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="130" >
+<Disp><![CDATA[PINCODE_LOCATOR.Set]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T97">
+<Obj plainTxt="False" ><![CDATA[Go_2.Click]]></Obj>
+<Details plainTxt="False" ><![CDATA[]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:20]]></Time>
+<TimeTick>1649331860</TimeTick>
+<NodeArgs eType="Replay" icon="13" nRep="133" >
+<Disp><![CDATA[Go_2.Click]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T98">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:25]]></Time>
+<TimeTick>1649331865</TimeTick>
+<NodeArgs eType="Replay" icon="7" nRep="134" status="Warning" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T99">
+<Obj plainTxt="False" ><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>title=Wall Paints, Home Painting & Paint Colour Combinations in India - Asian Paints<br>name=<br>micclass=Page<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (1 objects found)&nbsp;</FONT></u><br>
+micclass=Page<br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:25]]></Time>
+<TimeTick>1649331865</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="135" >
+<Disp><![CDATA["Wall Paints, Home Painting"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T100">
+<Obj plainTxt="False" ><![CDATA["PINCODE_LOCATOR"- Description mismatch]]></Obj>
+<Details plainTxt="False" ><![CDATA[The object was not found using the test object description. Check the object's properties.]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:25]]></Time>
+<TimeTick>1649331865</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="137" status="Warning" >
+<Disp><![CDATA["PINCODE_LOCATOR"- Description mismatch]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T101">
+<Obj plainTxt="False" ><![CDATA["PINCODE_LOCATOR"- Smart Identification]]></Obj>
+<Details plainTxt="False" ><![CDATA[<P><span class="text">The smart identification mechanism was invoked.</span></P><P><SPAN class=text>Reason: object not found.</SPAN></P>           <SPAN class=text><b>Original description:</b></SPAN><br>type=text<br>name=PINCODE_LOCATOR<br>micclass=WebEdit<br>html tag=INPUT<br><P><FONT face=Verdana size=2><SPAN class=text><B>Smart Identification Alternative Description: </B></SPAN></FONT></P><FONT face=Verdana size=2><u>Base filter properties (15 objects found)&nbsp;</FONT></u><br>
+type=text<br>micclass=WebEdit<br>html tag=INPUT<br><br><FONT face=Verdana size=2><u>Optional filter properties</FONT></u><br>
+name=PINCODE_LOCATOR<SPAN class=Failed> (Skipped)</SPAN><br>html id=ctaPincode<SPAN class=Failed> (Skipped)</SPAN><br>max length=524288<SPAN class=passed> (Used</SPAN>, 14 matches)</SPAN><br>default value=<SPAN class=passed> (Used</SPAN>, 14 matches)</SPAN><br>class=form-global__field form-text-input__field commonTextComp<SPAN class=passed> (Used</SPAN>, 12 matches)</SPAN><br>rows=0<SPAN class=passed> (Used</SPAN>, 12 matches)</SPAN><br>placeholder=Enter Pincode<SPAN class=passed> (Used</SPAN>, 1 matches)</SPAN><br>acc_name=<SPAN class=warning> (Ignored)<FONT color=#000000></FONT></SPAN><br>]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:25]]></Time>
+<TimeTick>1649331865</TimeTick>
+<NodeArgs eType="Replay" icon="11" nRep="138" >
+<Disp><![CDATA["PINCODE_LOCATOR"- Smart Identification]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T102">
+<Obj plainTxt="False" ><![CDATA[PINCODE_LOCATOR.Exist]]></Obj>
+<Details plainTxt="False" ><![CDATA["Object exists"]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:25]]></Time>
+<TimeTick>1649331865</TimeTick>
+<NodeArgs eType="Replay" icon="8" nRep="139" >
+<Disp><![CDATA[PINCODE_LOCATOR.Exist]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="7" nRep="129" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<NodeArgs eType="Context" icon="6" nRep="128" status="Warning" >
+<Disp><![CDATA[Wall Paints, Home Painting]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T103">
+<Obj ><![CDATA[findstore]]></Obj>
+<Details ><![CDATA[Navigation successful]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:25]]></Time>
+<TimeTick>1649331865</TimeTick>
+<NodeArgs eType="User" icon="9" nRep="140" status="Passed" >
+<Disp><![CDATA[findstore]]></Disp>
+</NodeArgs>
+</Step>
+<Step rID="T104">
+<Obj plainTxt="False" ><![CDATA[asianpaints]]></Obj>
+<Details plainTxt="False" ><![CDATA[Transaction "asianpaints" ended with "Fail" status (Total Duration: 242.6835 sec Wasted Time: 85.8694 sec).]]></Details>
+<Time><![CDATA[07-04-2022 - 17:14:32]]></Time>
+<TimeTick>1649331872</TimeTick>
+<NodeArgs eType="Transaction" icon="14" nRep="141" status="Warning" nType="End Transaction" Source="Action1" SourceLine="91" >
+<Disp><![CDATA[asianpaints]]></Disp>
+</NodeArgs>
+</Step>
+<Summary sTime="07-04-2022 - 17:10:29" eTime="07-04-2022 - 17:14:32" passed="7" failed="1" warnings="27" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="6" status="Failed" >
+<Disp><![CDATA[Action1 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T105">
+<AName><![CDATA[Action2]]></AName>
+<Summary sTime="07-04-2022 - 17:14:32" eTime="07-04-2022 - 17:14:32" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="143" >
+<Disp><![CDATA[Action2 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T106">
+<AName><![CDATA[Action3]]></AName>
+<Summary sTime="07-04-2022 - 17:14:32" eTime="07-04-2022 - 17:14:32" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="145" >
+<Disp><![CDATA[Action3 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Action rID="T107">
+<AName><![CDATA[Action4]]></AName>
+<Summary sTime="07-04-2022 - 17:14:32" eTime="07-04-2022 - 17:14:33" passed="0" failed="0" warnings="0" ></Summary>
+<NodeArgs eType="StartAction" icon="3" nRep="147" >
+<Disp><![CDATA[Action4 Summary]]></Disp>
+</NodeArgs>
+</Action>
+<Summary sTime="07-04-2022 - 17:10:28" eTime="07-04-2022 - 17:14:33" passed="7" failed="1" warnings="27" ></Summary>
+<NodeArgs eType="StartTest" icon="1" nRep="3" status="Failed" >
+<Disp><![CDATA[Test Driver Summary]]></Disp>
+</NodeArgs>
+</Doc>
+</Report>
